@@ -1,0 +1,572 @@
+/* IDEA:
+color of text on footer could be white or at least very light so it's better to see.
+
+
+kleuren van voorla footer moeten lichter. In een lichte omgeving is het niet duidelijk zichtbaar.
+
+misschien popups (modal) bij hobby's en dan animation is modal i.p.v.op wie ben ik pagina. Is namelijk erg druk.
+
+spacer maken 150px margintop; voor boven aan.
+ */
+ 
+
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.spacer{
+  margin-top: 150px;
+}
+
+body{
+  background-color:rgb(71, 70, 54);
+}
+
+#header{
+  background-image: url("../img/forest-mist.jpg");
+  height: 100vh;
+  line-height: 100vh;
+  text-align: center;
+}
+
+.frontpage-text{
+  animation: 1.5s zoomIn;
+}
+
+@keyframes zoomIn{
+  0%{
+    transform: scale(0.1);
+    opacity: 0;
+  }
+
+  30%{
+    opacity: 0.1;
+  }
+
+  100%{
+    transform: scale(1);
+    opacity: 1;
+  }
+
+}
+
+
+#header p{
+  mix-blend-mode: soft-light;
+  font-size: 200px;
+  font-family: 'Bangers', cursive;
+}
+
+#nav-mobile{
+  display: none;
+}
+
+.homepage-nav{
+  bottom: 0;
+}
+
+.otherpages-nav{
+  background-color: rgba(20, 20, 20, 0.95);
+}
+
+
+#nav-desktop{
+  display: flex;
+  position: fixed;
+  width: 100vw;
+  justify-content: space-around;
+  z-index: 100;
+}
+
+#nav-desktop a{
+  width: auto;
+  line-height: 50px;
+  text-decoration: none;
+  color: white;
+  width: auto;
+  margin: 15px;
+}
+
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+}
+.hover-underline-animation::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  transform-origin: bottom center;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom center;
+}
+
+#section-1{
+  padding: 50px;
+}
+
+#header-wiebenik{
+background-color: grey;
+text-align: center;
+}
+
+.container-wiebenik{
+  margin: 0 auto;
+  max-width: 800px;
+  color: white;
+  text-align: center;
+}
+
+.wiebenik-foto{
+  display: block;
+  border-radius: 50%;
+  margin: 0 auto;
+  margin-bottom: 75px;
+  transition: 0.5s;
+}
+
+.wiebenik-foto:hover{
+  filter: grayscale(50);
+  transform: scale(0.9);
+  transition: 2s;
+}
+
+#hobbies{
+  width: 100vw;
+}
+
+#hobbies h2{
+  text-align: center;
+  color: white;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.hobbies-container{
+  display: flex;
+  flex-direction: row;
+  width: auto;
+}
+
+.hobby1, .hobby2, .hobby3, .hobby4{
+  width: 25vw;
+  height: 50vh;
+  text-align: center;
+  line-height: 50vh;
+  animation: 1s fadeIn;
+}
+
+.hobby1 p, .hobby2 p, .hobby3 p, .hobby4 p{
+    background-color: rgba(0, 0, 0,  0.7);
+    color: white;
+    transition: 0.75s;
+}
+
+.hobby1 p:hover, .hobby2 p:hover, .hobby3 p:hover, .hobby4 p:hover{
+  background-color: rgba(0, 0, 0,  0.3);
+  transition: 0.75s;
+}
+
+.hobby1{transition: 0.5s; background-image: url(../img/overwatch_wallpaper.jpg); background-size:cover;}
+.hobby2{transition: 0.5s; background-image: url(../img/coding.gif); background-size:cover; background-position: center;;}
+.hobby3{transition: 0.5s; background-image: url(../img/music.gif); background-size:cover; background-position: center;}
+.hobby4{transition: 0.5s; background-color: orange; background-image: url(../img/learning.gif); background-size:cover;}
+
+.hobby1:hover{ transition: 0.5s; transform: scale(0.95); background-size:10;}
+.hobby2:hover{transition: 0.5s; transform: scale(0.95); background-size:cover;}
+.hobby3:hover{transition: 0.5s; transform: scale(0.95);  background-size:cover;}
+.hobby4:hover{transition: 0.5s; transform: scale(0.95); background-color: orange;}
+
+
+/*Skills*/
+
+.skills-h1{
+  text-align: center;
+  font-size: 50px;
+}
+
+#section-skills{
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.skills-wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 0 auto;
+}
+
+.skills-container{
+  width: 100%;
+  text-align: center; /*Centers the logos*/
+  padding: 15px;
+}
+
+.skills-container img{
+  width: 40%;
+  border-radius: 25px;
+  margin-bottom: 15px;
+  animation: fadeIn 3s ease;
+}
+
+.skills-container img:hover{
+
+}
+
+.skills-box {
+  width: 75%;
+  background-color: #ddd;
+  border-radius: 25px;
+  margin: 0 auto;
+}
+
+.skills {
+  text-align: right;
+  padding: 10px;
+  color: white;
+  border-radius: 25px;
+}
+
+/*animation HTML skill*/
+@keyframes changewidthHtml{
+  0%{
+    width: 0%;
+  }
+
+  100%{
+    width: 80%;
+  }
+}
+
+/*animation CSS skill*/
+@keyframes changewidthCss{
+  0%{
+    width: 0%;
+  }
+  100%{
+    width: 70%;
+  }
+}
+
+/*animation Javascript skill*/
+@keyframes changewidthJs{
+  0%{
+    width: 0%;
+  }
+  100%{
+    width: 45%;
+  }
+}
+
+/*animation PHP skill*/
+@keyframes changewidthPhp{
+  0%{
+    width: 0;
+  }
+
+
+  100%{
+    width: 55%;
+  }
+}
+
+@keyframes fadeIn{
+  0%{
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  40%{
+    transform:scale(1);
+  }
+
+  100%{
+    opacity: 1;
+  }
+}
+
+.html {animation: changewidthHtml 1s ease; width: 80%; background-color: #4CAF50;}
+.css {animation: changewidthCss 1s ease; width: 70%; background-color: #2196F3;}
+.js {animation: changewidthJs 1s ease; width: 45%; background-color: #f44336;}
+.php {animation: changewidthPhp 1s ease; width: 55%; background-color: #808080;}
+
+
+/*Grid page images projects*/
+
+#section-projects{
+  width:90vw;
+  margin: 0 auto;
+}
+
+#section-projects .projects-container{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin: 0 auto;
+  grid-gap: 15px;
+}
+
+.item-projects{
+  width: 300px;
+  height: 350px;
+  background-color: grey;
+  margin: 0 auto;
+  border-radius: 25px;
+  -webkit-box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.68);
+  -moz-box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.68);
+  box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.68);
+}
+
+
+.item-projects p{
+text-align: center;
+animation: fadeIn 3s;
+}
+
+.item-projects h3{
+text-align: center;
+font-weight: bold;
+}
+
+.item-projects img{
+  object-fit: contain;
+  border-radius: 25px;
+  height: 150px;
+  width: 100%;
+  animation: fadeIn 2s;
+}
+
+
+
+
+
+
+
+/*Footer*/
+.h3-ftr-logo{
+  font-family: 'Bangers', cursive;
+  font-size: 50px;
+}
+
+footer{
+  background-color: rgb(80, 80, 80);
+  height: auto;
+  text-align: center;
+  color: rgb(5, 5, 5);
+}
+
+.footer-container{
+  max-width: 1500px;
+  padding: 50px;
+  margin: 0 auto;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.social-icons-ftr{
+  font-size: 75px;
+}
+
+hr {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+  width: 75vw;
+}
+
+.footer-list{
+  float:left;
+  text-align: left;
+  list-style: none;
+  min-width: 175px;
+}
+
+.twitch-ftr i, .fb-ftr i{
+  transition: 0.25s;
+}
+
+.twitch-ftr i:hover{
+  background-color: #6441A4;
+}
+
+.fb-ftr i:hover{
+  background-color: #4267B2;
+  transition: 0.5s;
+}
+
+.footer-list a{
+  text-decoration: none;
+  color: rgb(5, 5, 5);
+}
+
+.footer-list a:hover{
+
+}
+
+.footer-list li{
+  padding: 10px;
+}
+
+.footer-list:nth-child(1){
+  padding-right: 50px;
+
+}
+
+.footer-list:nth-child(2){
+  border-left: 2px solid rgb(20, 20, 20);
+  padding-right: 50px;
+  padding-left: 50px;
+}
+
+.footer-list:nth-child(3){
+  border-left: 2px solid rgb(20, 20, 20);
+  padding-left: 50px;
+}
+
+.footer-list i{
+  font-size: 25px;
+  height:40px;
+  width: 40px;
+  background-color: rgb(65,65,65);
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+}
+
+
+.ftr-copy{
+    width: 50vw;
+    text-align: center;
+    margin: 0 auto;
+}
+
+
+.copy-container{
+  background-color: rgb(65, 65, 65);
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+/*Mobile-style*/
+
+@media only screen and (max-width:1100px) {
+  #section-projects .projects-container{
+  grid-template-columns: auto auto;
+  }
+
+}
+
+@media only screen and (max-width:1000px) {
+  body {
+
+  }
+
+  #header p{
+    font-size: 120px;
+  }
+
+  #nav-mobile{
+    display: none;
+  }
+
+
+  .footer-container{
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .footer-list{
+    max-width: 60%;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 25px;
+  }
+
+  .footer-list:nth-child(1){
+    border: none;
+    padding: 0;
+    padding-top: 25px;
+  }
+
+  .footer-list:nth-child(2){
+    border: none;
+  }
+
+  .footer-list:nth-child(3){
+    border: none;
+    padding: 0;
+    padding-top: 25px;
+  }
+
+
+  .hobbies-container{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+  }
+
+  .hobby1, .hobby2, .hobby3, .hobby4{width: 100vw;}
+
+
+  .skills-h1{
+    text-align: center;
+    font-size: 50px;
+  }
+
+  #section-skills{
+margin: 10px;
+  }
+
+  .skills-wrapper{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .skills-container{
+    margin: 0 auto;
+    margin-top: 15px;
+        width: 80%;
+  }
+
+
+}
+
+@media only screen and (max-width:900px) {
+  #section-projects .projects-container{
+  grid-template-columns: auto;
+
+  }
+}
+
+@media only screen and (max-width:600px) {
+
+
+.item-projects{
+  width: 250px;
+}
+
+#nav-desktop{
+  font-size: 13px;
+}
+
+}
