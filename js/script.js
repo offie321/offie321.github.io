@@ -1,8 +1,12 @@
 
+function showMenu(){
+  document.getElementById("nav-mobile").style.display = "block";
+
+  }
+
+    function hideMenu(){
+  document.getElementById("nav-mobile").style.display = "none";
+  }
 
 
-/* AOS */
-import AOS from 'aos';
-import 'aos/dist/aos.css'; // You can also use <link> for styles
-// ..
-AOS.init();
+  

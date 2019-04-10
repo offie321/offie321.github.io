@@ -23,6 +23,11 @@
   </head>
   <body data-aos="fade">
     <header id="header-wiebenik" class="header-wiebenik">
+
+      <div id="mobile-headerbar">
+        <a onclick="showMenu()"><p>&#9776;</p></a>
+      </div>
+
       <nav id="nav-desktop" class="otherpages-nav">
         <a class="hover-underline-animation" href="index.html">Home</a>
         <a class="hover-underline-animation" href="wiebenik.html">Who am I?</a>
@@ -30,11 +35,14 @@
         <a class="hover-underline-animation" href="projects.html">My Projects</a>
       </nav>
 
-
       <nav id="nav-mobile">
-        <a class="hover-underline-animation" href="#">Home</a>
-        <a class="hover-underline-animation" href="#">Page 2</a>
-        <a class="hover-underline-animation" href="#">Page 3</a>
+        <div id="mobile-headerbar">
+          <p onclick="hideMenu()">&#9587;</p>
+        </div>
+        <a class="hover-underline-animation" href="index.html">Home</a>
+        <a class="hover-underline-animation" href="wiebenik.html">Who am I?</a>
+        <a class="hover-underline-animation" href="skills.html">My Skills</a>
+        <a class="hover-underline-animation" href="projects.html">My Projects</a>
       </nav>
     </header>
 
@@ -52,10 +60,6 @@
         <div data-aos="zoom-in" class="item-projects"><img src="img/autoverhuurbob-header.png" alt="autoverhuurbob" /><hr> <h3>Autoverhuur Bob</h3> <br> <p>&bull; Autoverhuur <br> &bull; HTML,CSS</p></div>
 
       </div>
-
-
-
-
     </section>
 
 
@@ -85,9 +89,9 @@
 
         <ul class="footer-list">
           <li><b><h3>Follow Me:</h3></b></li>
-          <li><a class="insta-ftr" href="#"><i class="fab fa-instagram"></i></a></li>
-          <li><a class="fb-ftr" href="#"><i class="fab fa-facebook-square"></i></a></li>
-          <li><a class="linkedin-ftr" href="https://www.linkedin.com/in/jelmer-van-ofwegen-b59769183/"><i class="fab fa-linkedin"></i></a></li>
+          <li><a class="mail-ftr" href="mailto:offie1@outlook.com?Subject=Hello%20again" target="_top"><i class="fas fa-envelope"></i></a></li>
+          <li><a class="github-ftr" target="_blank" href="https://github.com/offie321"><i class="fab fa-github"></i></a></li>
+          <li><a class="linkedin-ftr" target="_blank" href="https://www.linkedin.com/in/jelmer-van-ofwegen-b59769183/"><i class="fab fa-linkedin"></i></a></li>
         </ul>
     </div>
 

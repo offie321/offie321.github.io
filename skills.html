@@ -19,10 +19,13 @@
 
     <script type="text/javascript" src="js/script.js"></script>
 
-
   </head>
   <body data-aos="fade">
     <header id="header-wiebenik" class="header-wiebenik">
+      <div id="mobile-headerbar">
+        <a onclick="showMenu()"><p>&#9776;</p></a>
+      </div>
+
       <nav id="nav-desktop" class="otherpages-nav">
         <a class="hover-underline-animation" href="index.html">Home</a>
         <a class="hover-underline-animation" href="wiebenik.html">Who am I?</a>
@@ -30,59 +33,53 @@
         <a class="hover-underline-animation" href="projects.html">My Projects</a>
       </nav>
 
-
       <nav id="nav-mobile">
-        <a class="hover-underline-animation" href="#">Home</a>
-        <a class="hover-underline-animation" href="#">Page 2</a>
-        <a class="hover-underline-animation" href="#">Page 3</a>
+        <div id="mobile-headerbar">
+          <p onclick="hideMenu()">&#9587;</p>
+        </div>
+        <a class="hover-underline-animation" href="index.html">Home</a>
+        <a class="hover-underline-animation" href="wiebenik.html">Who am I?</a>
+        <a class="hover-underline-animation" href="skills.html">My Skills</a>
+        <a class="hover-underline-animation" href="projects.html">My Projects</a>
       </nav>
     </header>
 
   <div class="content">
 <div class="spacer"></div>
+
     <h1 class="skills-h1" >My Skills</h1>
 
     <section id="section-skills">
       <div class="skills-wrapper">
-
-<div class="skills-container">
-  <img src="img/html-logo.png" alt="html-logo">
-  <div class="skills-box">
-    <div class="skills html">80%</div>
-  </div>
-  <br>
-  <p>Ik kan redelijk goed omgaan met HTML</p>
-</div>
-
-<div class="skills-container">
-  <img src="img/css-logo.png" alt="css-logo">
-  <div class="skills-box">
-    <div class="skills css">70%</div>
-  </div>
-  <br>
-  <p>Ik beheers voldoende kennis om een goede webpagina met style te maken.</p>
-</div>
-
-<div class="skills-container">
-  <img src="img/javascript-logo.png" alt="javascript-logo">
-  <div class="skills-box">
-    <div class="skills js">45%</div>
-  </div>
-  <br>
-  <p> Aan Javascript kan ik nog een beetje sleutelen. Ik begrijp de basis. </p>
-</div>
-
-<div class="skills-container">
-  <img src="img/php-logo.png" alt="php-logo">
-  <div class="skills-box">
-    <div class="skills php">55%</div>
-  </div>
-  <br>
-  <p>Lorem ipsum dolor sit amet</p>
-</div>
-
+        <!-- HTML container -->
+        <div class="skills-container">
+          <i class="fab fa-html5"></i>
+          <br>
+          <h2>HTML</h2>
+          <p>I am well experienced with HTML </p>
+        </div>
+        <!-- CSS container -->
+        <div class="skills-container">
+          <i class="fab fa-css3-alt"></i>
+          <br>
+          <h2>CSS</h2>
+          <p>I am well experienced with CSS</p>
+        </div>
+        <!-- Javascript container -->
+        <div class="skills-container">
+          <i class="fab fa-js-square"></i>
+          <br>
+          <h2>Javascript</h2>
+          <p>I know the basics of Javascript</p>
+        </div>
+        <!-- PHP container -->
+        <div class="skills-container">
+          <i class="fab fa-php"></i>
+          <br>
+          <h2>PHP</h2>
+          <p>I know the basics of PHP</p>
+        </div>
       </div>
-
     </section>
   </div>
 
@@ -110,9 +107,9 @@
 
         <ul class="footer-list">
           <li><b><h3>Follow Me:</h3></b></li>
-          <li><a class="insta-ftr" href="#"><i class="fab fa-instagram"></i></a></li>
-          <li><a class="fb-ftr" href="#"><i class="fab fa-facebook-square"></i></a></li>
-          <li><a class="linkedin-ftr" href="https://www.linkedin.com/in/jelmer-van-ofwegen-b59769183/"><i class="fab fa-linkedin"></i></a></li>
+          <li><a class="mail-ftr" href="mailto:offie1@outlook.com?Subject=Hello%20again" target="_top"><i class="fas fa-envelope"></i></a></li>
+          <li><a class="github-ftr" target="_blank" href="https://github.com/offie321"><i class="fab fa-github"></i></a></li>
+          <li><a class="linkedin-ftr" target="_blank" href="https://www.linkedin.com/in/jelmer-van-ofwegen-b59769183/"><i class="fab fa-linkedin"></i></a></li>
         </ul>
     </div>
 

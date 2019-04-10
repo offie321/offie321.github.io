@@ -7,6 +7,10 @@ kleuren van voorla footer moeten lichter. In een lichte omgeving is het niet dui
 misschien popups (modal) bij hobby's en dan animation is modal i.p.v.op wie ben ik pagina. Is namelijk erg druk.
 
 spacer maken 150px margintop; voor boven aan.
+
+// Hamburger Button on Mobile
+
+width of hobbies container more than 100% after using grid for better mobile experience/
  */
 
 
@@ -31,6 +35,11 @@ body{
   height: 100vh;
   line-height: 100vh;
   text-align: center;
+}
+
+#header a {
+  text-decoration: none;
+  color: black;
 }
 
 .frontpage-text{
@@ -73,8 +82,26 @@ body{
   background-color: rgba(20, 20, 20, 0.95);
 }
 
+#mobile-headerbar{
+  display: none;
+  height: 50px;
+  position: fixed;
+  z-index: 100;
+  width: 100vw;
+  background-color: black;
+  color: white;
+}
 
-#nav-desktop{
+#mobile-headerbar p{
+  line-height: 50px;
+  position: absolute;
+  left: 50px;
+  cursor: pointer;
+  font-size: 30px;
+}
+
+
+#nav-desktop, #nav-desktop-homepage{
   display: flex;
   position: fixed;
   width: 100vw;
@@ -82,13 +109,41 @@ body{
   z-index: 100;
 }
 
-#nav-desktop a{
+#nav-desktop a, #nav-desktop-homepage a{
   width: auto;
   line-height: 50px;
   text-decoration: none;
   color: white;
   width: auto;
   margin: 15px;
+}
+
+#nav-mobile{
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+  background-color: grey;
+  z-index: 100;
+  position: fixed;
+
+}
+
+#nav-mobile a{
+  display: grid;
+  grid-template-rows: auto auto auto;
+  width: 50vw;
+  margin: 0 auto;
+  text-align:  center;
+  text-decoration: none;
+  color: black;
+  font-size: 25px;
+  padding-top: 15px;
+}
+
+#nav-mobile #mobile-headerbar{
+ position: relative;
+ color: white ;
+ font-size: 30px;
 }
 
 .hover-underline-animation {
@@ -155,8 +210,9 @@ text-align: center;
 }
 
 .hobbies-container{
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+
 }
 
 .hobby1, .hobby2, .hobby3, .hobby4{
@@ -214,11 +270,14 @@ text-align: center;
   padding: 15px;
 }
 
-.skills-container img{
-  width: 40%;
-  border-radius: 25px;
+.skills-container i{
+  font-size: 10vw;
   margin-bottom: 15px;
   animation: fadeIn 3s ease;
+}
+
+.skills-container h2{
+  font-weight: bold;
 }
 
 .skills-container img:hover{
@@ -245,6 +304,21 @@ text-align: center;
     width: 0%;
   }
 
+  80%{
+    width: 81%;
+    -webkit-animation-timing-function: ease-out;
+  }
+
+  85%{
+    width: 79%;
+    -webkit-animation-timing-function: ease-in;
+  }
+
+  90%{
+    width: 81%;
+    -webkit-animation-timing-function: ease-in;
+  }
+
   100%{
     width: 80%;
   }
@@ -254,6 +328,21 @@ text-align: center;
 @keyframes changewidthCss{
   0%{
     width: 0%;
+  }
+
+  80%{
+    width: 71%;
+    -webkit-animation-timing-function: ease-out;
+  }
+
+  85%{
+    width: 69%;
+    -webkit-animation-timing-function: ease-in;
+  }
+
+  90%{
+    width: 71%;
+    -webkit-animation-timing-function: ease-in;
   }
   100%{
     width: 70%;
@@ -265,6 +354,22 @@ text-align: center;
   0%{
     width: 0%;
   }
+
+  80%{
+    width: 47%;
+    -webkit-animation-timing-function: ease-out;
+  }
+
+  85%{
+    width: 44%;
+    -webkit-animation-timing-function: ease-in;
+  }
+
+  90%{
+    width: 46%;
+    -webkit-animation-timing-function: ease-in;
+  }
+
   100%{
     width: 45%;
   }
@@ -274,6 +379,21 @@ text-align: center;
 @keyframes changewidthPhp{
   0%{
     width: 0;
+  }
+
+  80%{
+    width: 56%;
+    -webkit-animation-timing-function: ease-out;
+  }
+
+  85%{
+    width: 54%;
+    -webkit-animation-timing-function: ease-in;
+  }
+
+  90%{
+    width: 56%;
+    -webkit-animation-timing-function: ease-in;
   }
 
 
@@ -288,7 +408,7 @@ text-align: center;
     transform: scale(0.9);
   }
 
-  40%{
+  50%{
     transform:scale(1);
   }
 
@@ -315,6 +435,12 @@ text-align: center;
   grid-template-columns: auto auto auto;
   margin: 0 auto;
   grid-gap: 15px;
+  padding-top: 20px;
+}
+
+.projects-container hr{
+  background-color: black;
+  border: 0.5px solid black;
 }
 
 .item-projects{
@@ -346,7 +472,6 @@ font-weight: bold;
   width: 100%;
   animation: fadeIn 2s;
 }
-
 
 
 
@@ -397,8 +522,13 @@ hr {
   min-width: 175px;
 }
 
-.twitch-ftr i, .fb-ftr i{
+.mail-ftr i, .github-ftr i, .linkedin-ftr i{
   transition: 0.25s;
+}
+
+.mail-ftr i:hover{
+  background-color: #c71610;
+  transition: 0.5s;
 }
 
 .linkedin-ftr i:hover{
@@ -406,8 +536,8 @@ hr {
   transition: 0.5s;
 }
 
-.fb-ftr i:hover{
-  background-color: #4267B2;
+.github-ftr i:hover{
+  background-color: #333;
   transition: 0.5s;
 }
 
@@ -474,6 +604,21 @@ hr {
   grid-template-columns: auto auto;
   }
 
+
+  #mobile-headerbar{
+    display: block;
+  }
+
+  #nav-mobile{
+    display: none;
+  }
+
+
+
+  #nav-desktop{
+    display: none;
+  }
+
 }
 
 @media only screen and (max-width:1000px) {
@@ -520,12 +665,10 @@ hr {
 
 
   .hobbies-container{
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
+    grid-template-columns: auto auto;
   }
 
-  .hobby1, .hobby2, .hobby3, .hobby4{width: 100vw;}
+  .hobby1, .hobby2, .hobby3, .hobby4{width: 50vw;}
 
 
   .skills-h1{
@@ -548,6 +691,10 @@ margin: 10px;
         width: 80%;
   }
 
+  .skills-container i{
+    font-size: 20vw;
+  }
+
 
 }
 
@@ -568,5 +715,10 @@ margin: 10px;
 #nav-desktop{
   font-size: 13px;
 }
+
+#nav-desktop-homepage{
+  font-size: 13px;
+}
+
 
 }
