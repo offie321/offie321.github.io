@@ -125,7 +125,22 @@ body{
   background-color: grey;
   z-index: 100;
   position: fixed;
+  animation: 0.6s openmobNav ease-out;
+}
 
+@keyframes openmobNav {
+  0%{
+    transform: translateX(-50vw);
+  }
+
+  60%{
+    transform: translateX(00px);
+  }
+
+  100%{
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 #nav-mobile a{
