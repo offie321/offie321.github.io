@@ -92,7 +92,7 @@ body{
   color: white;
 }
 
-#mobile-headerbar p{
+#mobile-headerbar i{
   line-height: 50px;
   position: absolute;
   left: 50px;
