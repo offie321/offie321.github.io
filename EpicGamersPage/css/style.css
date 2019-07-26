@@ -318,10 +318,10 @@ header h2{
 
 .teammate-1 .img{background-image: url("../img/naruto.jpg");}
 .teammate-2 .img{background-image: url("../img/jiaruan.png");}
-.teammate-3 .img{background-image: url("../img/cardinal.jpg");}
-.teammate-4 .img{background-image: url("../img/cardinal.jpg");}
-.teammate-5 .img{background-image: url("../img/cardinal.jpg");}
-.teammate-6 .img{background-image: url("../img/cardinal.jpg");}
+.teammate-3 .img{background-image: url("../img/Cardinal.jpg");}
+.teammate-4 .img{background-image: url("../img/Cardinal.jpg");}
+.teammate-5 .img{background-image: url("../img/Cardinal.jpg");}
+.teammate-6 .img{background-image: url("../img/Cardinal.jpg");}
 
 .tm:hover{
   transition: 0.25s;
