@@ -242,15 +242,24 @@ nav a{
   background-position: center;
   animation-name: header_img_animation;
   animation-duration: 5s;
+  animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
 
-@keyframes header_img_animation {
+/* @keyframes header_img_animation {
   0%   {border-radius: 30% 63% 45% 70% / 74% 41% 66% 42%;}
   25%  {border-radius: 30% 30% 45% 40% / 74% 41% 39% 42%;}
   50%  {border-radius: 43% 58% 45% 40% / 74% 48% 55% 19%;}
   100% {border-radius: 43% 88% 45% 71% / 74% 34% 55% 19%;}
+} */
+
+@keyframes header_img_animation {
+  0%{border-radius: 36% 64% 54% 46% / 41% 61% 39% 59% ;}
+  25%{border-radius: 40% 60% 61% 39% / 35% 64% 36% 65% ;}
+  50%{border-radius: 53% 47% 70% 30% / 26% 70% 30% 74% ;}
+  75%{border-radius: 59% 41% 43% 57% / 36% 65% 35% 64% ;}
+  100%{border-radius: 30% 70% 56% 44% / 50% 47% 53% 50% ;}
 }
 
 section{
