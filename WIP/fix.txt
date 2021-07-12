@@ -1,0 +1,1 @@
+* Door bij de eerste section de background aan te passen naar 100vw is de section iets opgeschoven.

@@ -1,0 +1,736 @@
+*{
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
+  /* border: 1px solid red; */
+
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+/* Turns background of div to transparent */
+.bgTrans{
+  background-color: rgba(0, 0, 0, 0) !important;
+  }  
+
+/* Testing for animate on scroll */
+.train {
+    display: block;
+    max-width: 100%;
+    position: absolute;
+    bottom: -70px;
+    opacity: 1;
+    transform: translateX(-50%);
+}
+
+.Fragment1{
+  display: block;
+  z-index: 1;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  opacity: 1;
+  transform: rotate(360deg);
+  background-color: black;
+  background-image: url("https://cdn3.iconfinder.com/data/icons/popular-services-brands-vol-2/512/twitch-512.png");
+  background-position: center;
+  background-size: cover;
+  border-radius: 100px;
+  left:0;
+  top:0;
+
+}
+
+.Fragment2{
+  display: block;
+  z-index: 1;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  right:0;
+  top:0;
+  float: right;
+  opacity: 1;
+  transform: translate(0,0);
+  background-color: black;
+  background-image: url("https://cdn3.iconfinder.com/data/icons/popular-services-brands-vol-2/512/twitch-512.png");
+  background-position: center;
+  background-size: cover;
+  border-radius: 100px;
+
+}
+
+.Fragment3{
+  display: block;
+  z-index: 1;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  opacity: 1;
+  transform: translate(0,0);
+  transform: rotate(360deg);
+  background-color: black;
+}
+
+
+
+/* header{
+  height: 90vh;
+  width: 100vw;
+  background-color: pink;
+  line-height: 90vh;
+  text-align: center;
+
+  font-size: 100px;
+} */
+
+/* nav{
+  position: fixed;
+  width: 100vw;
+  z-index: 100;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  top: 0;
+}
+
+nav div{
+  padding: 10px;
+  padding-right: 100px;
+  position: relative;
+  justify-content: start;
+  color: white;
+  font-size: 25px;
+  display: none;
+}
+
+nav li{
+  padding: 15px;
+  padding-right: 100px;
+} */
+
+nav{
+  height: 80px;
+  position: fixed;
+  width: 100vw;
+  margin: 0 auto;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  top: 0;
+}
+
+/* .navLogo, .navLinks li{
+  padding: 10px;
+  padding-right: 100px;
+  position: relative;
+  justify-content: start;
+  color: white;
+  font-size: 25px;
+} */
+
+#navLogo{
+  filter: opacity(0);
+}
+
+.logo{
+  line-height: 80px;
+  padding-left: 75px;;
+  position: relative;
+  color: white;
+  font-size: 30px;
+}
+
+.navLinks{
+  display: flex;
+  flex-direction: row;
+  padding-right: 75px;
+}
+
+.navLinks li{
+  font-size: 20px !important;
+  line-height: 80px;
+  padding-right: 45px;
+}
+
+/* Nav underline animation css */
+a:hover {
+	background-size: 100% .1em;
+}
+
+a:active{
+  background-size: 100% .1em;
+}
+
+a.left {
+	background-position: left bottom;
+}
+
+
+nav a{
+  color: white;
+  text-decoration: none;
+  background: linear-gradient(currentColor, currentColor) bottom / 0 .1em no-repeat;
+  transition: 0.25s background-size;
+}
+
+
+#headerName{
+  transition: 0.25s;
+  font-size: 8rem;
+  color: white;
+}
+
+.headerP{
+  font-size: 1rem;
+}
+
+.typewrite{
+  color: white;
+  text-decoration: none;
+  cursor:text;
+}
+
+
+
+.header{
+
+  /* background-image: url("../img/DSC03844.jpg"); */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-attachment: fixed; */
+  animation-name: header;
+  animation-duration: 2s;
+  overflow-y: hidden;
+  transition: 0.75s;
+}
+
+.headerDiv{
+  margin: 0 auto;
+  margin-top: 180px;
+  margin-bottom: 100px;
+  width: 80vw;
+  vertical-align:bottom;
+  text-align: center;
+}
+
+.headerGrid{
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.header-grid-item{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header_sec1{
+  color: white;
+}
+
+.headerDiv .headerImg{
+  width: 500px;
+  height: 500px;
+  border-radius: 30% 86% 27% 100% / 74% 41% 79% 42%;
+  background-image: url("../img/DSC03736.jpg");
+  background-size: cover;
+  background-position: center;
+  animation-name: header_img_animation;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes header_img_animation {
+  0%   {border-radius: 30% 63% 45% 70% / 74% 41% 66% 42%;}
+  25%  {border-radius: 30% 30% 45% 40% / 74% 41% 39% 42%;}
+  50%  {border-radius: 43% 58% 45% 40% / 74% 48% 55% 19%;}
+  100% {border-radius: 43% 88% 45% 71% / 74% 34% 55% 19%;}
+}
+
+section{
+  max-width: 1500px;
+  width: 90vw;
+  margin: 0 auto;
+
+}
+
+.Sec1Bg{
+  width: auto;
+  height: auto;
+  background-color: #2C2F33;
+}
+
+.Sec2Bg{
+  width: auto;
+  height: auto;
+  background-color: #23272A;
+}
+
+
+#sec1{
+  display: grid;
+  grid-template-columns: auto;
+  margin: 0 auto;
+  padding: 25px 0px 25px;
+}
+
+#sec2{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 15px;
+
+padding: 25px 0px 25px;
+
+}
+
+#sec3{
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 15px;
+  padding: 25px 0px 25px;
+  width: 60vw;
+  align-items: center;
+}
+
+
+#sec1 .grid-item{
+  position: relative;
+
+}
+
+#sec2 .grid-item{
+  /* width: 25vw; */
+
+}
+
+#sec3 .grid-item{
+}
+
+.grid-item{
+  margin: 0 auto;
+  background-color: #0a0a0a;
+  padding: 15px;
+  /* width: 55vw; */
+    /* border-radius: 25px; */
+}
+
+.header_sec1::before{
+  display: inline-block;
+  content: "";
+  border-top: .3rem solid cyan;
+  width: 1.5rem;
+  margin: 0 0.3rem;
+  transform: translateY(-0.5rem);
+}
+
+p{
+  color: white;
+}
+
+body{
+  background-color: #23272A;
+}
+
+
+/* .btn{
+  border: 2px solid darkgrey;
+  background-color: black;
+  color: grey;
+  padding: 8px;
+  border-radius: 10px;
+  margin: 5px;
+  font-size: 1.1rem;
+  transition: 0.25s;
+}
+
+.btn:hover{
+  transform: scale(1.02);
+  transition: 0.25s;
+} */
+
+.SectionDivider{
+  display: inline-block;
+  vertical-align: middle;
+  width: 100vw;
+  text-align: center;
+}
+
+/* Divider0 */
+.SectionDivider0 {
+  position: relative;
+  width: 100vw;
+  height: 100px;
+}
+
+.SectionDivider0::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: #23272A;
+  clip-path: polygon(100% 0, 0 100%, 0 100%);
+}
+
+.SectionDivider0::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: #2C2F33;
+  clip-path: polygon(0 0, 0 100%, 100% 100%);
+}
+
+
+/* Divider1 */
+.SectionDivider1 {
+  position: relative;
+  width: 100vw;
+  height: 100px;
+}
+
+.SectionDivider1::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: #2C2F33;
+  clip-path: polygon(100% 0, 0 0, 0 100%);
+}
+
+.SectionDivider1::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: #23272A;
+  clip-path: polygon(100% 0, 0 100%, 100% 100%);
+}
+
+/* Divider 2 */
+.SectionDivider2 {
+  position: relative;
+  width: 100vw;
+  height: 100px;
+}
+
+.SectionDivider2::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: #23272A;
+  clip-path: polygon(100% 0, 0 0, 0 100%);
+}
+
+.SectionDivider2::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: #2C2F33;
+  clip-path: polygon(100% 0, 0 100%, 100% 100%);
+}
+
+/* Divider3 */
+.SectionDivider3 {
+  position: relative;
+  width: 100vw;
+  height: 100px;
+}
+
+.SectionDivider3::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: #2C2F33;
+  /* clip-path: polygon(100% 0, 0 100%, 0 100%);  */
+  /* Works only when line above is commented */
+}
+
+.SectionDivider3::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: #0a0a0a;
+  clip-path: polygon(0 0, 0 100%, 100% 100%);
+}
+
+footer{
+  height:250px;
+  width: 100vw;
+  background-color: #0a0a0a;
+}
+
+.footer-grid{
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  color: white;
+  margin: 0 auto;
+  width: 80vw;
+  max-width: 1500px;
+}
+
+.footer-grid-item{
+
+}
+
+.footer-grid li:first-child{
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin-bottom: 5px;
+}
+
+.footer-grid li:first-child::before{
+  display: inline-block;
+  content: "";
+  border-top: .3rem solid cyan;
+  width: 1.5rem;
+  margin: 0 0.3rem;
+  transform: translateY(-0.30rem);
+}
+
+.footer-grid li:not(:first-child){
+  padding-left: 2.15rem;
+}
+
+.img_about{
+  position: relative;
+  border-radius: 50%;
+  z-index: 50;
+}
+
+.txt_cent{
+  text-align: center;
+}
+
+.footer_Copy{
+  bottom: 0;
+  width: 100vw;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  color: white;
+  background-color: #121212;
+}
+
+.footer-grid-item a{
+  text-decoration: none;
+  color: white;
+  background: linear-gradient(currentColor, currentColor) bottom / 0 .1em no-repeat;
+  transition: 0.25s background-size;
+}
+
+.footer-grid-item a:hover{
+  text-decoration: none;
+  color: grey;
+}
+
+.content_about{
+ width: 45vw;
+ margin: 0 auto;
+ margin-top: 160px;
+ margin-bottom: 80px;
+}
+
+.img_aboutPage{
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+
+  border-radius: 50%;
+}
+
+.content_about hr{
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 1px solid grey;
+  height: 2px;
+  background-color: grey;
+  border-radius: 25px;
+}
+
+/*  Tablets in landscape mode, older desktop monitors */
+
+@media only screen and (min-width: 1024px) and (max-width: 1365px) {
+
+
+
+  #sec2{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 15px;
+    padding: 25px 0px 25px;
+  }
+
+  #sec3{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 15px;
+    padding: 25px 0px 25px;
+    width: 80vw;
+    align-items: center;
+  }
+}
+
+/*  Tablets in portrait mode, large display smartphones landscape mode */
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  #sec2{
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 15px;
+    padding: 25px 0px 25px;
+  }
+
+  #sec3{
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 15px;
+    padding: 25px 0px 25px;
+    width: 75vw;
+    align-items: center;
+  }
+
+  .headerGrid{
+    display: grid;
+    grid-template-columns: auto;
+  
+  }
+/* TODO: This makes the header img larger and without any margin at the top. 
+    Maybe change this back by removing this code*/
+  .headerDiv{
+    margin-top: 0%;
+    width: 100vw;
+  }
+
+  .headerDiv .headerImg{
+    width: 100%;
+    height: 500px;
+    border-radius: 0;
+    background-image: url("../img/DSC03736.jpg");
+    background-size: cover;
+    background-position: center;
+    animation-name: none;
+  }
+}
+
+/*  Smartphones in landscape mode */
+
+@media only screen and (min-width: 421px) and (max-width: 767px) {
+  #sec2{
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 15px;
+    padding: 25px 0px 25px;
+ }
+
+ .headerGrid{
+  display: grid;
+  grid-template-columns: auto;
+}
+
+  .header_design1 h1{
+    text-align: center;
+    line-height: 85vh;
+    font-family: 'Poppins', sans-serif;
+    font-size: 150px;
+    mix-blend-mode: soft-light;
+    color: black;
+    background-attachment: fixed;
+    /* background-color: white; */
+    background-color: rgba(110, 110, 110, 0.1);
+    animation-name: header_h1;
+    animation-duration: 2s;
+  }
+
+  .footer-grid{
+    display: grid;
+    grid-template-columns: auto auto;
+    color: white;
+    margin: 0 auto;
+    width: 80vw;
+  }
+
+  #sec3{
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 15px;
+    padding: 25px 0px 25px;
+    width: 90vw;
+    align-items: center;
+  }
+
+
+
+}
+
+/*  Smartphones in portrait mode  */
+
+@media only screen and (max-width: 420px) {
+  #sec2{
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 15px;
+    padding: 25px 0px 25px;
+  }
+
+  section{
+    width: 100vw;
+    margin: 0 auto;
+  
+  }
+
+  .header{
+    height:60vh;
+
+  }
+
+
+  .header h1{
+    text-align: center;
+    line-height: 60vh;
+    font-family: 'Poppins', sans-serif;
+    font-size: 100px;
+    mix-blend-mode: soft-light;
+    color: black;
+    background-attachment: fixed;
+    /* background-color: white; */
+    background-color: rgba(110, 110, 110, 0.1);
+    animation-name: header_h1;
+    animation-duration: 2s;
+  }
+
+  #sec3{
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 15px;
+    padding: 25px 0px 25px;
+    width: 90vw;
+    align-items: center;
+  }
+
+}
+
+
+
+
+/* make navbar show when header is gone by scrolling  */
+
+/*
+
+121212
+
+
+old section bgColor
+background-color: #0a0a0a;
+*/

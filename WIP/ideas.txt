@@ -1,0 +1,80 @@
+
+
+* insta feed somewhere.
+* https://morrog.nl/ for design ideas
+
+
+* maybe change backgroundcolor of grid-item or remove backgroundColor of it.
+
+* change width of image on scroll idea. Kan met scroll in javascript.
+
+
+
+
+oude header style 
+
+
+
+/* oude header */
+/* 
+.header{
+  height:85vh; */
+  /* background-image: url("../img/DSC03844.jpg"); */
+  /* background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; */
+  /* background-attachment: fixed; */
+  /* animation-name: header;
+  animation-duration: 2s;
+  overflow-y: hidden;
+  transition: 0.75s; */
+/* } */
+
+@keyframes header_index{
+  0% {
+    /* transform: scale(0.1); */
+    /* height: 50vh; */
+    filter: brightness(0);
+  }
+  75%{
+    filter: brightness(1);
+  }
+  100% {
+    filter: brightness(1);
+    /* transform: scale(1); */
+
+  }
+}
+
+@keyframes header {
+  0% {
+    /* transform: scale(0.1); */
+    /* height: 50vh; */
+    filter: brightness(0);
+
+  }
+  75%{
+    filter: brightness(1);
+  }
+  100% {
+    filter: brightness(1);
+
+  }
+}
+/* Ook van oude header */
+/* .header h1{
+  text-align: center;
+  line-height: 85vh;
+  font-family: 'Poppins', sans-serif;
+  font-size: 250px;
+  mix-blend-mode: soft-light;
+  color: black;
+  background-attachment: fixed;
+  /* background-color: white; */
+  /* background-color: rgba(110, 110, 110, 0.1);
+  animation-name: header_h1;
+  animation-duration: 2s; */
+/* } */ 
+
+
+End of old header style.
