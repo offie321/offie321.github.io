@@ -4,7 +4,6 @@
   overflow-x: hidden;
   font-family: 'Poppins', sans-serif;
   /* border: 1px solid red; */
-
 }
 
 html{
@@ -263,10 +262,9 @@ nav a{
 }
 
 section{
-  max-width: 1500px;
+  max-width: 1400px;
   width: 90vw;
   margin: 0 auto;
-
 }
 
 .Sec1Bg{
@@ -473,7 +471,7 @@ body{
 }
 
 footer{
-  height:250px;
+
   width: 100vw;
   background-color: #0a0a0a;
 }
@@ -483,9 +481,39 @@ footer{
   grid-template-columns: auto auto auto auto;
   color: white;
   margin: 0 auto;
-  width: 80vw;
+  width: 60vw;
   max-width: 1500px;
 }
+
+/* Not used for now */
+/* .socials-grid-item{
+  display: flex;
+  color: white;
+  border: 1px solid grey;
+  padding: 8px;
+  border-radius: 5px;
+  margin: 10px;
+  line-height: 35px;
+}
+.socials-grid-item:hover{
+  display: flex;
+  color: white;
+  border: 1px solid grey;
+  padding: 8px;
+  border-radius: 5px;
+  margin: 10px;
+  line-height: 35px;
+  transform: scale(1.05);
+}
+
+.social-link-arrow{
+  align-items: flex-end;
+}
+
+.socials-logo{
+  margin-right: 8px;
+  font-size: 35px;
+} */
 
 .footer-grid-item{
 
@@ -520,14 +548,24 @@ footer{
   text-align: center;
 }
 
-.footer_Copy{
+.footer_Icons{
   bottom: 0;
-  width: 100vw;
-  height: 50px;
+  width: 30vw;
   line-height: 50px;
   text-align: center;
   color: white;
-  background-color: #121212;
+  margin: 0 auto;
+}
+
+.footer_Icons i{
+font-size: 35px;
+padding: 15px;
+color: darkgrey;
+}
+
+.footer_Icons i:hover{
+  color: lightgrey;
+  cursor: pointer;
 }
 
 .footer-grid-item a{

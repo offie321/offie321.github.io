@@ -9,9 +9,6 @@ function scrollFunction() {
     document.getElementById("navLogo").style.filter = "opacity(1)";
     document.getElementById("navLogo").style.transition = "0.5s";
     document.getElementById("navLogo").style.transitionDelay = "0.35s";
-
-
-    document.getElementById("headerName").style.filter = "opacity(0)";
   } else {
     if(document.documentElement.clientWidth < 1365){
       document.getElementById("navId").style.backgroundColor = "rgba(10, 10, 10, 0.6)";
@@ -20,8 +17,6 @@ function scrollFunction() {
     }
 
     document.getElementById("navId").style.transition = "0.25s";
-
-    document.getElementById("headerName").style.filter = "opacity(1)";
 
     document.getElementById("navLogo").style.filter = "opacity(0)";
     document.getElementById("navLogo").style.transition = "0.5ss";
