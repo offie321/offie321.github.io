@@ -574,7 +574,7 @@ footer{
   text-align: center;
 }
 
-.footer_Icons{
+.social_Icons{
   bottom: 0;
   width: 30vw;
   line-height: 50px;
@@ -583,13 +583,13 @@ footer{
   margin: 0 auto;
 }
 
-.footer_Icons i{
+.social_Icons i{
 font-size: 35px;
 padding: 15px;
 color: darkgrey;
 }
 
-.footer_Icons i:hover{
+.social_Icons i:hover{
   color: lightgrey;
   cursor: pointer;
 }
@@ -644,7 +644,7 @@ color: darkgrey;
 .timeline::after {
   content: '';
   position: absolute;
-  width: 6px;
+  width: 10px;
   background-color: black;
   top: 0;
   bottom: 0;
