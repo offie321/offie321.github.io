@@ -19,6 +19,10 @@ small{
   color: white;
 }
 
+b{
+  font-size: 1.05rem;
+}
+
 /* Turns background of div to transparent */
 .bgTrans{
   background-color: rgba(0, 0, 0, 0) !important;
