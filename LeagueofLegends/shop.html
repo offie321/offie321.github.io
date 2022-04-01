@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+
+    <title>Shop | League of Legends</title>
+    <link rel="icon" type="image/png" href="./img/favicon_LoL.png" />
+</head>
+
+<body id="body" data-page="shop">
+    <header class="main_header">
+        <nav>
+            <ul id="nav_ul">
+                <li><img onclick="window.location.href='index.html'" class="navLogo" src="./img/favicon_LoL.png"
+                        alt="League of Legends logo in header"></li>
+                <li class="hamburgerButton">
+                    <div id="hamburger" class="hamburger">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </li>
+                <li><a href="index.html">HOME</a></li>
+                <li><a class="navActive" href="shop.html">SHOP</a></li>
+                <li><a href="bronnen.html">Sources</a></li>
+                <li><a id="showfilterKnop" class="showfilterKnop" data-show-hide="Show">Hide Filters</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" class="shopMain">
+        <section class="shop_filter">
+            <button class="formButton" id="shoppingCartBtn">&#128722; Winkelwagen <span
+                    class="shoppingcartCounter">0</span></button>
+            <br><br>
+            <hr>
+            <br>
+            <form action="javascript:void(0);">
+                <p>Search:</p>
+                <label>
+                    <input id="shop_searchbar" class="fullwidth" type="text" placeholder="Search">
+                </label>
+                <br><br>
+                <p>Categories:</p>
+                <select id="shopcategories">
+                    <option>All</option>
+                    <option>Plushes</option>
+                    <option>Figures</option>
+                    <option>Pins</option>
+                    <option>In game items</option>
+                </select>
+                <br><br>
+                <p>Filters:</p>
+                <label>
+                    <input id="Favo" type="checkbox">
+                    Only show favorites
+                </label>
+                <br><br>
+                <label>
+                    <input type="submit" id="submitCheck" class="formButton" value="Zoek op filter">
+                </label>
+            </form>
+
+        </section>
+        <article id="noItems" data-noitem="false">
+            <img src="./img/sadPepe.png" alt="Pepe The Frog">
+            <p>found nothing</p>
+        </article>
+
+
+        <section id="section_shop_items" class="section_grid">
+            <!-- Champions -->
+            <article class="shopCard card" data-productCategory="Figures">
+                <figure>
+                    <button onclick="addFav(this)" class="fav">&#10084;</button>
+                    <p class="card_price">7</p>
+                    <p data-productbeschikbaar="true">Niet beschikbaar</p>
+                    <img src="./img/sona_figure.png" alt="Plaatje">
+                </figure>
+                <header>
+                    <h2>
+                        Sona Figure
+                    </h2>
+                </header>
+                <section>
+                    <p>
+                        Take your game and music playing to the next level with this adorable Sona figure! With easily
+                        posable limbs, 3 interchangable faceplates, and her inseperable instrument, Etwhal, you'll be
+                        making harmonies in no time.
+                        <br><br>
+                        Features:
+                        <br><br>
+                        Articulated Sona Figure
+                        <br>
+                        3 Faceplates
+                        <br>
+                        Additional Etwhal and Ability Accessories
+                        <br>
+                        Nendoroid Stand
+                    </p>
+                    <section class="cardButtonsContainer">
+                        <button onclick="openShopItem(this)" class="readMoreButton cardformButton">ReadMore</button>
+                        <button onclick="addToCart(this)" class="card_buy cardformButton">Add &#128722;</button>
+                    </section>
+                </section>
+            </article>
+
+            <article class="shopCard card" data-productCategory="Figures">
+                <figure>
+                    <button onclick="addFav(this)" class="fav">&#10084;</button>
+                    <p class="card_price">7</p>
+                    <p data-productbeschikbaar="true">Niet beschikbaar</p>
+                    <img src="./img/kaisa_figure.png" alt="Plaatje">
+                </figure>
+                <header>
+                    <h2>
+                        Kaisa Figure
+                    </h2>
+                </header>
+                <section>
+                    <p>
+                        Blast void missles at your enemies with our latest Nendoroid, Kai'Sa. Featuring customizable
+                        poses, 3 faceplates, and of course, her void mask.
+                        <br><br>
+                        Features:
+                        <br><br>
+                        Articulated Kai'Sa Figure
+                        <br>
+                        3 Faceplates
+                        <br>
+                        Living Void Carapace Accessory
+                        <br>
+                        Nendoroid Stand
+                    </p>
+                    <section class="cardButtonsContainer">
+                        <button onclick="openShopItem(this)" class="readMoreButton cardformButton">ReadMore</button>
+                        <button onclick="addToCart(this)" class="card_buy cardformButton">Add &#128722;</button>
+                    </section>
+                </section>
+            </article>
+
+            <article class="shopCard card" data-productCategory="Figures">
+                <figure>
+                    <button onclick="addFav(this)" class="fav">&#10084;</button>
+                    <p class="card_price">18</p>
+                    <p data-productbeschikbaar="true">Niet beschikbaar</p>
+                    <img src="./img/vayne_figure.png" alt="Plaatje">
+                </figure>
+                <header>
+                    <h2>
+                        Vayne Figure
+                    </h2>
+                </header>
+                <section>
+                    <p>
+                        Shauna Vayne is a deadly, remorseless Demacian monster hunter who has dedicated her life to
+                        finding and destroying the demon that murdered her family. Armed with a wrist-mounted crossbow
+                        and a heart full of vengeance, she is only truly happy when slaying practitioners or creations
+                        of the dark arts, striking from the shadows with a flurry of silver bolts.
+                        <br><br>
+                        Vayne, The Night Hunter is now Unlocked.
+                        <br><br>
+                        Approximate Measurements
+                        <br><br>
+                        Height: 11.3 in / 28.5 cm
+                        <br>
+                        Width: 6.3 in / 16.0 cm
+                    </p>
+                    <section class="cardButtonsContainer">
+                        <button onclick="openShopItem(this)" class="readMoreButton cardformButton">ReadMore</button>
+                        <button onclick="addToCart(this)" class="card_buy cardformButton">Add &#128722;</button>
+                    </section>
+                </section>
+            </article>
+
+            <article class="shopCard card" data-productCategory="Figures">
+                <figure>
+                    <button onclick="addFav(this)" class="fav">&#10084;</button>
+                    <p class="card_price">18</p>
+                    <p data-productbeschikbaar="true">Niet beschikbaar</p>
+                    <img src="./img/vi_figure.png" alt="Plaatje">
+                </figure>
+                <header>
+                    <h2>
+                        Vi Figure
+                    </h2>
+                </header>
+                <section>
+                    <p>
+                        One girl wrecking crew. Vi is now Unlocked.
+                        <br><br>
+                        Material and Approximate Measurements:
+                        <br><br>
+                        PVC materials
+                        <br>
+                        Height: 10.0 in / 25.4 cm
+                        <br>
+                        Width: 6.5 in / 16.5 cm
+                        <br><br>
+                        This Statue comes in a custom designed box. Please note that the box is for the protection of
+                        the statue during transportation only and is not replaceable if damaged.
+                    </p>
+                    <section class="cardButtonsContainer">
+                        <button onclick="openShopItem(this)" class="readMoreButton cardformButton">ReadMore</button>
+                        <button onclick="addToCart(this)" class="card_buy cardformButton">Add &#128722;</button>
+                    </section>
+                </section>
+            </article>
+
+            <article class="shopCard card" data-productCategory="Figures">
+                <figure>
+                    <button onclick="addFav(this)" class="fav">&#10084;</button>
+                    <p class="card_price">12</p>
+                    <p data-productbeschikbaar="true">Niet beschikbaar</p>
+                    <img src="./img/ornn_figure.webp" alt="Plaatje">
+                </figure>
+                <header>
+                    <h2>
+                        Ornn Figure
+                    </h2>
+                </header>
+                <section>
+                    <p>
+                        Do you love hammers and staying away from the business of mortal beings? Do you long to spend
+                        hours at your forge, pounding molten rock into astonishing weapons? Then this Series 4, #10 Ornn
+                        figure is the perfect addition to your room!
+                        <br><br>
+                        Features:
+                        <br><br>
+                        The Freljordian demi-god Ornn working at his forge
+                        Collectable Series 4 box
+                        <br><br>
+                        Approximate Measurements:
+                        <br><br>
+                        Height: 5.2 in / 13.3 cm
+                        <br>
+                        Width: 4 in / 10 cm
+                    </p>
+                    <section class="cardButtonsContainer">
+                        <button onclick="openShopItem(this)" class="readMoreButton cardformButton">ReadMore</button>
+                        <button onclick="addToCart(this)" class="card_buy cardformButton">Add &#128722;</button>
+                    </section>
+                </section>
+            </article>
+
+
+            <article class="shopCard card" data-productCategory="Plushes">
+                <figure>
+                    <button onclick="addFav(this)" class="fav">&#10084;</button>
+                    <p class="card_price">20</p>
+                    <p data-productbeschikbaar="true">Niet beschikbaar</p>
+                    <img src="./img/urf_plush.png" alt="Plaatje">
+                </figure>
+                <header>
+                    <h2>
+                        Urf Plush
+                    </h2>
+                </header>
+                <section>
+                    <p>
+                        The most famous Manatee in the world makes the grandest of entrances to become #00 in the
+                        Collectible Plush line. The line will never be the same.
+                        <br><br>
+                        Urf is #00 in the Collectible Plush line.
+                        <br><br>
+                        Approximate Measurements:
+                        <br><br>
+                        Plush stands at 7.7 inches / 19.6 centimeters tall
+                        <br><br>
+                        Packaging Dimensions:
+                        <br><br>
+                        Height: 8.5 in / 21.6 cm
+                        <br>
+                        Width: 6 in / 15.2 cm
+                        <br>
+                        Depth: 5 in / 12.7 cm
+                        <br><br>
+                        100% Polyester Fiber
+                    </p>
+                    <section class="cardButtonsContainer">
+                        <button onclick="openShopItem(this)" class="readMoreButton cardformButton">ReadMore</button>
+                        <button onclick="addToCart(this)" class="card_buy cardformButton">Add &#128722;</button>
+                    </section>
+                </section>
+            </article>
+
+            <article class="shopCard card" data-productCategory="Plushes">
+                <figure>
+                    <button onclick="addFav(this)" class="fav">&#10084;</button>
+                    <p class="card_price">20</p>
+                    <p data-productbeschikbaar="true">Niet beschikbaar</p>
+                    <img src="./img/fizz_plush.png" alt="Plaatje">
+                </figure>
+                <header>
+                    <h2>
+                        Fizz Plush
+                    </h2>
+                </header>
+                <section>
+                    <p>
+                        This is one time you won't want to ban Fizz.
+                        <br><br>
+                        Snuggle up with the Tidal Trickster! Fizz is #01 in the Collectible Plush line.
+                        <br><br>
+                        Approximate Measurements:Plush stands at 7 inches tall
+                        <br><br>
+                        Packaging dimensions
+                        <br><br>
+                        Height: 8.5 in / 21.6 cm
+                        <br>
+                        Width: 6 in / 15.2 cm
+                        <br>
+                        Depth: 5 in / 12.7 cm
+                        <br><br>
+                        Polyester Fiber
+                    </p>
+                    <section class="cardButtonsContainer">
+                        <button onclick="openShopItem(this)" class="readMoreButton cardformButton">ReadMore</button>
+                        <button onclick="addToCart(this)" class="card_buy cardformButton">Add &#128722;</button>
+                    </section>
+                </section>
+            </article>
+
+            <article class="shopCard card" data-productCategory="Plushes">
+                <figure>
+                    <button onclick="addFav(this)" class="fav">&#10084;</button>
+                    <p class="card_price">20</p>
+                    <p data-productbeschikbaar="true">Niet beschikbaar</p>
+                    <img src="./img/voli_plush.png" alt="Plaatje">
+                </figure>
+                <header>
+                    <h2>
+                        Voli Plush
+                    </h2>
+                </header>
+                <section>
+                    <p>
+                        The Ursine do not know fear, and neither will you as you hug this unbearably cute Volibear
+                        plush!
+                        <br><br>
+                        Voli is #02 in the Collectible Plush line.
+                        <br><br>
+                        Approximate Measurements:Plush stands at 7 inches tall
+                        <br><br>
+                        Packaging dimensions
+                        <br><br>
+                        Height: 8.5 in / 21.6 cm
+                        <br>
+                        Width: 6 in / 15.2 cm
+                        <br>
+                        Depth: 5 in / 12.7 cm
+                        <br><br>
+                        Polyester Fiber
+                    </p>
+                    <section class="cardButtonsContainer">
+                        <button onclick="openShopItem(this)" class="readMoreButton cardformButton">ReadMore</button>
+                        <button onclick="addToCart(this)" class="card_buy cardformButton">Add &#128722;</button>
+                    </section>
+                </section>
+            </article>
+            <article class="shopCard card" data-productCategory="Plushes">
+                <figure>
+                    <button onclick="addFav(this)" class="fav">&#10084;</button>
+                    <p class="card_price">20</p>
+                    <p data-productbeschikbaar="true">Niet beschikbaar</p>
+                    <img src="./img/nasus_plush.png" alt="Plaatje">
+                </figure>
+                <header>
+                    <h2>
+                        Nasus Plush
+                    </h2>
+                </header>
+                <section>
+                    <p>
+                        The Curator of the Sands has joined the collectible plush line to help celebrate the Year of the
+                        Dog.
+                        <br><br>
+                        Nasus is #06 in the Collectible Plush line.
+                        <br><br>
+                        Approximate Measurements:Plush stands at 7 inches tall
+                        <br><br>
+                        Packaging dimensions
+                        <br><br>
+                        Height: 8.5 in / 21.6 cm
+                        <br>
+                        Width: 6 in / 15.2 cm
+                        <br>
+                        Depth: 5 in / 12.7 cm
+                        <br><br>
+                        Polyester Fiber
+                    </p>
+                    <section class="cardButtonsContainer">
+                        <button onclick="openShopItem(this)" class="readMoreButton cardformButton">ReadMore</button>
+                        <button onclick="addToCart(this)" class="card_buy cardformButton">Add &#128722;</button>
+                    </section>
+                </section>
+            </article>
+
+            <article class="shopCard card" data-productCategory="Plushes">
+                <figure>
+                    <button onclick="addFav(this)" class="fav">&#10084;</button>
+                    <p class="card_price">20</p>
+                    <p data-productbeschikbaar="true">Niet beschikbaar</p>
+                    <img src="./img/thresh_plush.png" alt="Plaatje">
+                </figure>
+                <header>
+                    <h2>
+                        Thresh Plush
+                    </h2>
+                </header>
+                <section>
+                    <p>
+                        Thresh is here to provide dark passage for those who dare trust The Chain Warden.
+                        <br><br>
+                        Thresh is #11 in the Collectible Plush line.
+                        <br><br>
+                        Approximate Measurements:
+                        <br><br>
+                        Plush stands 7.0 in / 17.7 cm tall
+                        <br><br>
+                        Packaging Dimensions:
+                        <br><br>
+                        Height: 8.5 in / 21.6 cm
+                        <br>
+                        Width: 6 in / 15.2 cm
+                        <br>
+                        Depth: 5 in / 12.7 cm
+                        <br>
+                        100% Polyester Fiber
+                    </p>
+                    <section class="cardButtonsContainer">
+                        <button onclick="openShopItem(this)" class="readMoreButton cardformButton">ReadMore</button>
+                        <button onclick="addToCart(this)" class="card_buy cardformButton">Add &#128722;</button>
+                    </section>
+                </section>
+            </article>
+
+
+
+            <article class="shopCard card" data-productCategory="Plushes">
+                <figure>
+                    <button onclick="addFav(this)" class="fav">&#10084;</button>
+                    <p class="card_price">20</p>
+                    <p data-productbeschikbaar="false">Niet beschikbaar</p>
+                    <img src="./img/kindred_plush.webp" alt="Plaatje">
+                </figure>
+                <header>
+                    <h2>
+                        Kindred Plush
+                    </h2>
+                </header>
+                <section>
+                    <p>
+                        You have chosen to Embrace the Lamb rather than Feed the Wolf.
+                        <br><br>
+                        Approximate MeasurementPlush stands at 9 inches tall
+                        <br><br>
+                        Packaging Dimensions:
+                        <br><br>
+                        Height: 8.5 in / 21.6 cm
+                        <br>
+                        Width: 6 in / 15.2 cm
+                        <br>
+                        Depth: 5 in / 12.7 cm
+                        <br>
+                        Polyester Fiber
+                    </p>
+                    <section class="cardButtonsContainer">
+                        <button onclick="openShopItem(this)" class="readMoreButton cardformButton">ReadMore</button>
+                        <button onclick="addToCart(this)" class="card_buy cardformButton">Add &#128722;</button>
+                    </section>
+                </section>
+            </article>
+
+            <article class="shopCard card" data-productCategory="Pins">
+                <figure>
+                    <button onclick="addFav(this)" class="fav">&#10084;</button>
+                    <p class="card_price">21</p>
+                    <p data-productbeschikbaar="true">Niet beschikbaar</p>
+                    <img src="./img/starGuardianPins.png" alt="Plaatje">
+                </figure>
+                <header>
+                    <h2>
+                        Star Guardian Pin Pack
+                    </h2>
+                </header>
+                <section>
+                    <p>
+                        While Xayah & Rakan want to destroy the Star Guardians, Neeko has come to the aid of Ahri &
+                        Lux's team to help drive back these corrupted allies. Discover them all in this Limited Edition
+                        set of enamel pins.
+                        <br>
+                        Pins Included:
+                        <br><br>
+                        Star Guardian Rakan
+                        <br>
+                        Star Guardian Xayah
+                        <br>
+                        Star Guardian Neeko
+                    </p>
+                    <section class="cardButtonsContainer">
+                        <button onclick="openShopItem(this)" class="readMoreButton cardformButton">ReadMore</button>
+                        <button onclick="addToCart(this)" class="card_buy cardformButton">Add &#128722;</button>
+                    </section>
+                </section>
+            </article>
+
+            <article class="shopCard card" data-productCategory="Pins">
+                <figure>
+                    <button onclick="addFav(this)" class="fav">&#10084;</button>
+                    <p class="card_price">21</p>
+                    <p data-productbeschikbaar="true">Niet beschikbaar</p>
+                    <img src="./img/festivePinPack.png" alt="Plaatje">
+                </figure>
+                <header>
+                    <h2>
+                        Festive Poro Pin Pack
+                    </h2>
+                </header>
+                <section>
+                    <p>
+                        Happiness is having a happy fluft of poros with you wherever you go :)
+                        <br><br>
+                        Pins Included:
+                        <br><br>
+                        Happy to See You!
+                        <br>
+                        Nom-Nom-Nom
+                        <br>
+                        Santa-Braum's Poro Reindeer
+                    </p>
+                    <section class="cardButtonsContainer">
+                        <button onclick="openShopItem(this)" class="readMoreButton cardformButton">ReadMore</button>
+                        <button onclick="addToCart(this)" class="card_buy cardformButton">Add &#128722;</button>
+                    </section>
+                </section>
+            </article>
+
+            <article class="shopCard card" data-productCategory="Pins">
+                <figure>
+                    <button onclick="addFav(this)" class="fav">&#10084;</button>
+                    <p class="card_price">31</p>
+                    <p data-productbeschikbaar="true">Niet beschikbaar</p>
+                    <img src="./img/kdaPin.png" alt="Plaatje">
+                </figure>
+                <header>
+                    <h2>
+                        K/DA Pin Pack
+                    </h2>
+                </header>
+                <section>
+                    <p>
+                        K/DA, the latest global phenomenon to take the world stage, takes it to the top with their debut
+                        single. Keep the show going with these new Limited Edition enamel pins.
+                        <br>
+                        Pins Included:
+                        <br><br>
+                        K/DA Akali (Mask)
+                        <br>
+                        K/DA Akali (Regular)
+                        <br>
+                        K/DA Ahri
+                        <br>
+                        K/DA Evelynn
+                        <br>
+                        K/DA Kai'Sa
+                    </p>
+                    <section class="cardButtonsContainer">
+                        <button onclick="openShopItem(this)" class="readMoreButton cardformButton">ReadMore</button>
+                        <button onclick="addToCart(this)" class="card_buy cardformButton">Add &#128722;</button>
+                    </section>
+                </section>
+            </article>
+
+            <article class="shopCard card" data-productCategory="In game items">
+                <figure>
+                    <button onclick="addFav(this)" class="fav">&#10084;</button>
+                    <p class="card_price">1</p>
+                    <p data-productbeschikbaar="true">Niet beschikbaar</p>
+                    <img src="./img/Hextech_Crafting_Key.webp" alt="Plaatje">
+                </figure>
+                <header>
+                    <h2>
+                        HexTech Key
+                    </h2>
+                </header>
+                <section>
+                    <p>
+                        Used to open Hextech Chests
+                    </p>
+                    <section class="cardButtonsContainer">
+                        <button onclick="openShopItem(this)" class="readMoreButton cardformButton">ReadMore</button>
+                        <button onclick="addToCart(this)" class="card_buy cardformButton">Add &#128722;</button>
+                    </section>
+                </section>
+            </article>
+
+            <article class="shopCard card" data-productCategory="In game items">
+                <figure>
+                    <button onclick="addFav(this)" class="fav">&#10084;</button>
+                    <p class="card_price">3</p>
+                    <p data-productbeschikbaar="true">Niet beschikbaar</p>
+                    <img src="./img/Hextech_Crafting_Masterwork_Chest.webp" alt="Plaatje">
+                </figure>
+                <header>
+                    <h2>
+                        Masterwork chest
+                    </h2>
+                </header>
+                <section>
+                    <p>
+                        What's in the box?
+                        <br><br>
+                        Requires a Hextech Key to open.
+                    </p>
+                    <section class="cardButtonsContainer">
+                        <button onclick="openShopItem(this)" class="readMoreButton cardformButton">ReadMore</button>
+                        <button onclick="addToCart(this)" class="card_buy cardformButton">Add &#128722;</button>
+                    </section>
+                </section>
+            </article>
+
+            <article class="shopCard card" data-productCategory="In game items">
+                <figure>
+                    <button onclick="addFav(this)" class="fav">&#10084;</button>
+                    <p class="card_price">8</p>
+                    <p data-productbeschikbaar="true">Niet beschikbaar</p>
+                    <img src="./img/Hextech_Crafting_Chest_and_Key.webp" alt="Plaatje">
+                </figure>
+                <header>
+                    <h2>
+                        Chest and Key
+                    </h2>
+                </header>
+                <section>
+                    <p>
+                        The highest-quality crafting items available. Curated and approved by the master craftsman Ornn.
+                        <br>
+                        <abbr title="In-game description shows only this sentence.">Requires a Hextech Key to
+                            open.</abbr>
+                        <br><br>
+                        Est. <a href="https://leagueoflegends.fandom.com/wiki/V8.7">V8.7.</a> Requires a Hextech Key to
+                        open.
+                    </p>
+                    <section class="cardButtonsContainer">
+                        <button onclick="openShopItem(this)" class="readMoreButton cardformButton">ReadMore</button>
+                        <button onclick="addToCart(this)" class="card_buy cardformButton">Add &#128722;</button>
+                    </section>
+                </section>
+            </article>
+
+        </section>
+
+        <!-- The Modal -->
+        <div id="shoppingCartModal" class="modal">
+            <!-- Modal content -->
+            <div id="modalContent" class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Winkelwagen</h2>
+                <section id="modalGridContainer">
+                    <section id="modalGridItemsContainer">
+                    </section>
+                    <section id="modalRightContainer">
+                    </section>
+                </section>
+            </div>
+        </div>
+
+        <!-- The Modal -->
+        <div id="shopItemModal" class="shopItemModal">
+            <!-- Modal content -->
+            <div id="shopItemModalContent" class="shopItemModalContent">
+                <span class="shopItemModalClose">&times;</span>
+            </div>
+        </div>
+    </main>
+    <div class="SectionDivider0"></div>
+    <footer>
+        <section class="footer-content">
+            <figure>
+                <img src="./img/LoL_logo.png" alt="League of Legends logo in footer section">
+            </figure>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="bronnen.html">Sources</a></li>
+            </ul>
+            <ul>
+                <li><a href="https://www.leagueoflegends.com/en-gb/">League of Legends</a></li>
+            </ul>
+        </section>
+
+        <section class="copy">
+            Jelmer
+        </section>
+    </footer>
+    <script src="./js/showFilters.js"></script>
+    <script src="js/loadInId.js"></script>
+    <script src="./js/scroll.js"></script>
+
+    <script src="./js/search.js"></script>
+    <script src="./js/filter.js"></script>
+    <script src="js/mouseMovementWallpaper.js"></script>
+    <script src="js/fav.js"></script>
+    <script src="js/addToCart.js"></script>
+    <script src="./js/nav.js"></script>
+    <script src="./js/shopItemModal.js"></script>
+    <script src="./js/shoppingCartModal.js"></script>
+
+
+</body>
+
+</html>
