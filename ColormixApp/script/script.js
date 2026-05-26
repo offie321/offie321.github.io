@@ -4,6 +4,8 @@ let colorB = null;
 let targetMix = 0;
 let mixStrength = 0;
 
+let liquidMix = 0;
+
 // simple color database
 const colors = {
   red: { r: 255, g: 0, b: 0 },
@@ -38,6 +40,7 @@ function resetMix() {
 
   mixStrength = 0;
   targetMix = 0;
+  liquidMix = 0;
 
   document.getElementById("colorA").style.background = "#333";
   document.getElementById("colorA").innerText = "A";
@@ -45,8 +48,7 @@ function resetMix() {
   document.getElementById("colorB").style.background = "#333";
   document.getElementById("colorB").innerText = "B";
 
-  const box = document.getElementById("mixBox");
-  box.style.background = "white";
+  document.getElementById("mixBox").style.background = "white";
 }
 
 // attach reset button (add a button with id="resetBtn")
@@ -80,28 +82,33 @@ window.addEventListener("deviceorientation", (event) => {
 });
 
 function animate() {
-  mixStrength = lerp(mixStrength, targetMix, 0.08);
+  mixStrength = lerp(mixStrength, targetMix, 0.05);
 
   const box = document.getElementById("mixBox");
 
   if (colorA && colorB) {
-    const result = mix(colors[colorA], colors[colorB], mixStrength);
+
+    // 🔥 accumulate mixing over time (THIS is key)
+    liquidMix += mixStrength * 0.002;
+    if (liquidMix > 1) liquidMix = 1;
+
+    const result = mix(colors[colorA], colors[colorB], liquidMix);
 
     const rgb = `rgb(${result.r}, ${result.g}, ${result.b})`;
 
-    // how full the "glass" is (60% → 85%)
-    const fill = 60 + mixStrength * 25;
+    // 🍹 liquid surface around 50%
+    const surface = 50;
 
-    // tilt effect (slosh left/right)
-    const tilt = (mixStrength - 0.5) * 30;
+    // slight wobble from tilt
+    const wobble = (mixStrength - 0.5) * 10;
 
     box.style.background = `
       linear-gradient(
-        ${90 + tilt}deg,
-        white 0%,
-        white ${100 - fill}%,
-        ${rgb} ${100 - fill}%,
-        ${rgb} 100%
+        to top,
+        ${rgb} 0%,
+        ${rgb} ${surface + wobble}%,
+        white ${surface + wobble + 1}%,
+        white 100%
       )
     `;
   }
