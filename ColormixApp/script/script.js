@@ -1,13 +1,10 @@
 let colorA = null;
 let colorB = null;
 
-let mixLevel = 0;
-let targetMix = 0;
-let mixVelocity = 0;
-
+let mixLevel = 0;   // 0 = pure A, 1 = fully blended
 let energy = 0;
 
-// simple color database
+// color database
 const colors = {
   red: { r: 255, g: 0, b: 0 },
   blue: { r: 0, g: 0, b: 255 },
@@ -34,14 +31,13 @@ document.querySelectorAll(".color").forEach(btn => {
   });
 });
 
-// RESET FUNCTION
+// RESET
 function resetMix() {
   colorA = null;
   colorB = null;
 
-  mixStrength = 0;
-  targetMix = 0;
-  liquidMix = 0;
+  mixLevel = 0;
+  energy = 0;
 
   document.getElementById("colorA").style.background = "#333";
   document.getElementById("colorA").innerText = "A";
@@ -50,12 +46,12 @@ function resetMix() {
   document.getElementById("colorB").innerText = "B";
 
   document.getElementById("mixBox").style.background = "white";
+  document.getElementById("mixBox").style.transform = "none";
 }
 
-// attach reset button (add a button with id="resetBtn")
 document.getElementById("resetBtn")?.addEventListener("click", resetMix);
 
-// mix function
+// mix between two colors
 function mix(c1, c2, t) {
   return {
     r: Math.round(c1.r + (c2.r - c1.r) * t),
@@ -64,22 +60,31 @@ function mix(c1, c2, t) {
   };
 }
 
-// smoother lerp
+// average color (final blended state)
+function average(c1, c2) {
+  return {
+    r: Math.round((c1.r + c2.r) / 2),
+    g: Math.round((c1.g + c2.g) / 2),
+    b: Math.round((c1.b + c2.b) / 2),
+  };
+}
+
+// smooth lerp
 function lerp(a, b, t) {
   return a + (b - a) * t;
 }
 
-// device tilt detection
+// tilt input (NO direction influence, only intensity)
 window.addEventListener("deviceorientation", (event) => {
   if (!colorA || !colorB) return;
 
   const gamma = event.gamma || 0;
 
-  // normalize tilt strength (0 → 1)
-  const intensity = Math.min(Math.abs(gamma) / 60, 1);
+  // wider sensitivity range (0 → 1.5)
+  const intensity = Math.min(Math.abs(gamma) / 45, 1.5);
 
-  // smooth energy buildup instead of instant assignment
-  energy = lerp(energy, intensity, 0.1);
+  // smooth energy buildup
+  energy = lerp(energy, intensity, 0.08);
 });
 
 function animate() {
@@ -87,36 +92,34 @@ function animate() {
 
   if (colorA && colorB) {
 
-    // 🎯 energy slowly increases target mix
-    targetMix += energy * 0.01;
+    const cA = colors[colorA];
+    const cB = colors[colorB];
+
+    // final blended target (stable endpoint)
+    const target = average(cA, cB);
+
+    // tilt increases diffusion speed
+    const diffusionSpeed = energy * 0.015;
+
+    // progressive mixing (no direction bias)
+    mixLevel += diffusionSpeed;
 
     // natural decay when not tilting
-    targetMix *= 0.995;
+    mixLevel *= 0.998;
 
     // clamp
-    targetMix = Math.min(targetMix, 1);
-
-    // 🧠 smooth spring interpolation (this is the magic)
-    const stiffness = 0.08;
-    const damping = 0.78;
-
-    let force = (targetMix - mixLevel) * stiffness;
-    mixVelocity = mixVelocity * damping + force;
-    mixLevel += mixVelocity;
-
-    // clamp final
     mixLevel = Math.max(0, Math.min(1, mixLevel));
 
-    // 🎨 color mix
-    const result = mix(colors[colorA], colors[colorB], mixLevel);
+    // blend from A → averaged color
+    const result = mix(cA, target, mixLevel);
 
     box.style.background = `rgb(${result.r}, ${result.g}, ${result.b})`;
 
-    // 🌊 liquid movement effect (stronger when mixing)
-    const wobble = Math.sin(mixLevel * Math.PI * 6) * energy * 6;
-    box.style.transform = `translateY(${wobble}px) scale(${1 + energy * 0.02})`;
+    // liquid motion feel
+    const wobble = Math.sin(mixLevel * 8) * energy * 3;
+    box.style.transform = `translateY(${wobble}px) scale(${1 + mixLevel * 0.02})`;
 
-    // 🟢 when fully mixed → stabilize
+    // stabilize when fully mixed
     if (mixLevel > 0.98) {
       box.style.transform = "none";
     }
