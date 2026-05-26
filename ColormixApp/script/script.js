@@ -1,11 +1,8 @@
 let colorA = null;
 let colorB = null;
 
-let targetMix = 0;
-let mixStrength = 0;
-
-let mixA = 1; // starts fully A
-let mixB = 0; // starts empty B
+let mixLevel = 0;
+let mixEnergy = 0;
 
 // simple color database
 const colors = {
@@ -75,74 +72,35 @@ window.addEventListener("deviceorientation", (event) => {
 
   const gamma = event.gamma || 0;
 
-  // normalize -90..90 → -1..1
-  targetMix = gamma / 90;
+  // only intensity matters, not left/right
+  const intensity = Math.abs(gamma) / 90;
+
+  mixEnergy = intensity;
 });
 
 function animate() {
-  mixStrength = lerp(mixStrength, targetMix, 0.05);
-
   const box = document.getElementById("mixBox");
 
   if (colorA && colorB) {
 
-    // 🔥 tilt controls exchange rate (not replacement!)
-    const exchange = Math.abs(mixStrength) * 0.01;
+    // energy slowly increases mix
+    mixLevel += mixEnergy * 0.003;
 
-    // if tilting right → B enters A
-    if (mixStrength > 0) {
-      mixA -= exchange;
-      mixB += exchange;
-    }
+    // natural decay (stops infinite instant mixing)
+    mixLevel *= 0.999;
 
-    // if tilting left → A comes back (reverse mixing)
-    if (mixStrength < 0) {
-      mixA += exchange;
-      mixB -= exchange;
-    }
+    if (mixLevel > 1) mixLevel = 1;
 
-    // clamp so they stay valid
-    mixA = Math.max(0, Math.min(1, mixA));
-    mixB = Math.max(0, Math.min(1, mixB));
-
-    // normalize (important for stability)
-    const total = mixA + mixB;
-    const a = mixA / total;
-    const b = mixB / total;
-
-    const colA = colors[colorA];
-    const colB = colors[colorB];
-
-    const result = {
-      r: Math.round(colA.r * a + colB.r * b),
-      g: Math.round(colA.g * a + colB.g * b),
-      b: Math.round(colA.b * a + colB.b * b),
-    };
+    const result = mix(colors[colorA], colors[colorB], mixLevel);
 
     const rgb = `rgb(${result.r}, ${result.g}, ${result.b})`;
 
-    // 🍹 stable horizontal liquid surface
-    const surface = 50;
+    box.style.background = rgb;
 
-    // slight tilt effect ONLY on slope (not height)
-    const tiltOffset = mixStrength * 5;
+    // optional subtle “liquid movement feel”
+    const wobble = Math.sin(mixLevel * 10) * 2;
 
-    box.style.background = `
-      linear-gradient(
-        to right,
-        ${rgb} 0%,
-        ${rgb} 100%
-      )
-    `;
-
-    box.style.clipPath = `
-      polygon(
-        0% ${surface - tiltOffset}%,
-        100% ${surface + tiltOffset}%,
-        100% 100%,
-        0% 100%
-      )
-    `;
+    box.style.transform = `translateY(${wobble}px)`;
   }
 
   requestAnimationFrame(animate);
