@@ -33,12 +33,20 @@ document.querySelectorAll(".color").forEach(btn => {
 
 // RESET FUNCTION
 function resetMix() {
+  colorA = null;
+  colorB = null;
+
   mixStrength = 0;
   targetMix = 0;
 
+  document.getElementById("colorA").style.background = "#333";
+  document.getElementById("colorA").innerText = "A";
+
+  document.getElementById("colorB").style.background = "#333";
+  document.getElementById("colorB").innerText = "B";
+
   const box = document.getElementById("mixBox");
   box.style.background = "white";
-  box.innerText = "reset";
 }
 
 // attach reset button (add a button with id="resetBtn")
@@ -81,29 +89,19 @@ function animate() {
 
     const rgb = `rgb(${result.r}, ${result.g}, ${result.b})`;
 
-    // bottom fill height (60% → 75%)
-    const baseHeight = 60;
-    const extraHeight = mixStrength * 15;
-    const fillHeight = baseHeight + extraHeight;
+    // how full the "glass" is (60% → 85%)
+    const fill = 60 + mixStrength * 25;
 
-    // slanted top edge based on tilt
-    const tiltOffset = (mixStrength - 0.5) * 40; // controls slope
+    // tilt effect (slosh left/right)
+    const tilt = (mixStrength - 0.5) * 30;
 
     box.style.background = `
       linear-gradient(
-        to top,
-        ${rgb} 0%,
-        ${rgb} ${fillHeight}%,
-        white ${fillHeight + 1}%
-      )
-    `;
-
-    box.style.clipPath = `
-      polygon(
-        0% 100%,
-        100% 100%,
-        100% ${fillHeight + tiltOffset}%,
-        0% ${fillHeight - tiltOffset}%
+        ${90 + tilt}deg,
+        white 0%,
+        white ${100 - fill}%,
+        ${rgb} ${100 - fill}%,
+        ${rgb} 100%
       )
     `;
   }
