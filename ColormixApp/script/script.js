@@ -2,7 +2,10 @@ let colorA = null;
 let colorB = null;
 
 let mixLevel = 0;
-let mixEnergy = 0;
+let targetMix = 0;
+let mixVelocity = 0;
+
+let energy = 0;
 
 // simple color database
 const colors = {
@@ -72,10 +75,11 @@ window.addEventListener("deviceorientation", (event) => {
 
   const gamma = event.gamma || 0;
 
-  // only intensity matters, not left/right
-  const intensity = Math.abs(gamma) / 90;
+  // normalize tilt strength (0 → 1)
+  const intensity = Math.min(Math.abs(gamma) / 60, 1);
 
-  mixEnergy = intensity;
+  // smooth energy buildup instead of instant assignment
+  energy = lerp(energy, intensity, 0.1);
 });
 
 function animate() {
@@ -83,24 +87,39 @@ function animate() {
 
   if (colorA && colorB) {
 
-    // energy slowly increases mix
-    mixLevel += mixEnergy * 0.003;
+    // 🎯 energy slowly increases target mix
+    targetMix += energy * 0.01;
 
-    // natural decay (stops infinite instant mixing)
-    mixLevel *= 0.999;
+    // natural decay when not tilting
+    targetMix *= 0.995;
 
-    if (mixLevel > 1) mixLevel = 1;
+    // clamp
+    targetMix = Math.min(targetMix, 1);
 
+    // 🧠 smooth spring interpolation (this is the magic)
+    const stiffness = 0.08;
+    const damping = 0.78;
+
+    let force = (targetMix - mixLevel) * stiffness;
+    mixVelocity = mixVelocity * damping + force;
+    mixLevel += mixVelocity;
+
+    // clamp final
+    mixLevel = Math.max(0, Math.min(1, mixLevel));
+
+    // 🎨 color mix
     const result = mix(colors[colorA], colors[colorB], mixLevel);
 
-    const rgb = `rgb(${result.r}, ${result.g}, ${result.b})`;
+    box.style.background = `rgb(${result.r}, ${result.g}, ${result.b})`;
 
-    box.style.background = rgb;
+    // 🌊 liquid movement effect (stronger when mixing)
+    const wobble = Math.sin(mixLevel * Math.PI * 6) * energy * 6;
+    box.style.transform = `translateY(${wobble}px) scale(${1 + energy * 0.02})`;
 
-    // optional subtle “liquid movement feel”
-    const wobble = Math.sin(mixLevel * 10) * 2;
-
-    box.style.transform = `translateY(${wobble}px)`;
+    // 🟢 when fully mixed → stabilize
+    if (mixLevel > 0.98) {
+      box.style.transform = "none";
+    }
   }
 
   requestAnimationFrame(animate);
