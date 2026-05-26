@@ -1,10 +1,9 @@
 let colorA = null;
 let colorB = null;
 
-let mixLevel = 0;   // 0 = pure A, 1 = fully blended
-let energy = 0;
+let mix = 0;       // 0 = A at bottom, 1 = fully mixed
+let tilt = 0;      // smoothed device tilt
 
-// color database
 const colors = {
   red: { r: 255, g: 0, b: 0 },
   blue: { r: 0, g: 0, b: 255 },
@@ -17,27 +16,26 @@ const colors = {
 // select colors
 document.querySelectorAll(".color").forEach(btn => {
   btn.addEventListener("click", () => {
-    const selected = btn.dataset.color;
+    const c = btn.dataset.color;
 
     if (!colorA) {
-      colorA = selected;
-      document.getElementById("colorA").style.background = selected;
-      document.getElementById("colorA").innerText = selected;
+      colorA = c;
+      document.getElementById("colorA").style.background = c;
+      document.getElementById("colorA").innerText = c;
     } else {
-      colorB = selected;
-      document.getElementById("colorB").style.background = selected;
-      document.getElementById("colorB").innerText = selected;
+      colorB = c;
+      document.getElementById("colorB").style.background = c;
+      document.getElementById("colorB").innerText = c;
     }
   });
 });
 
-// RESET
-function resetMix() {
+// reset
+document.getElementById("resetBtn").addEventListener("click", () => {
   colorA = null;
   colorB = null;
-
-  mixLevel = 0;
-  energy = 0;
+  mix = 0;
+  tilt = 0;
 
   document.getElementById("colorA").style.background = "#333";
   document.getElementById("colorA").innerText = "A";
@@ -45,84 +43,71 @@ function resetMix() {
   document.getElementById("colorB").style.background = "#333";
   document.getElementById("colorB").innerText = "B";
 
-  document.getElementById("mixBox").style.background = "white";
-  document.getElementById("mixBox").style.transform = "none";
-}
-
-document.getElementById("resetBtn")?.addEventListener("click", resetMix);
-
-// mix between two colors
-function mix(c1, c2, t) {
-  return {
-    r: Math.round(c1.r + (c2.r - c1.r) * t),
-    g: Math.round(c1.g + (c2.g - c1.g) * t),
-    b: Math.round(c1.b + (c2.b - c1.b) * t),
-  };
-}
-
-// average color (final blended state)
-function average(c1, c2) {
-  return {
-    r: Math.round((c1.r + c2.r) / 2),
-    g: Math.round((c1.g + c2.g) / 2),
-    b: Math.round((c1.b + c2.b) / 2),
-  };
-}
-
-// smooth lerp
-function lerp(a, b, t) {
-  return a + (b - a) * t;
-}
-
-// tilt input (NO direction influence, only intensity)
-window.addEventListener("deviceorientation", (event) => {
-  if (!colorA || !colorB) return;
-
-  const gamma = event.gamma || 0;
-
-  // wider sensitivity range (0 → 1.5)
-  const intensity = Math.min(Math.abs(gamma) / 45, 1.5);
-
-  // smooth energy buildup
-  energy = lerp(energy, intensity, 0.08);
+  const box = document.getElementById("mixBox");
+  box.style.background = "white";
+  box.style.transform = "none";
 });
 
+// device tilt (direction matters slightly for slosh feel)
+window.addEventListener("deviceorientation", (e) => {
+  if (!colorA || !colorB) return;
+
+  const g = e.gamma || 0;
+
+  // smoother tilt (-1 → 1)
+  const targetTilt = Math.max(-1, Math.min(1, g / 30));
+
+  // smooth interpolation
+  tilt += (targetTilt - tilt) * 0.1;
+});
+
+// helper
+function mixColor(a, b, t) {
+  return {
+    r: a.r + (b.r - a.r) * t,
+    g: a.g + (b.g - a.g) * t,
+    b: a.b + (b.b - a.b) * t,
+  };
+}
+
+// animation
 function animate() {
   const box = document.getElementById("mixBox");
 
   if (colorA && colorB) {
-
     const cA = colors[colorA];
     const cB = colors[colorB];
 
-    // final blended target (stable endpoint)
-    const target = average(cA, cB);
+    // 🎯 slosh effect:
+    // tilt back & forth slowly increases mixing
+    const movement = Math.abs(tilt);
 
-    // tilt increases diffusion speed
-    const diffusionSpeed = energy * 0.015;
+    // mixing only happens when tilting (like shaking a drink)
+    mix += movement * 0.008;
 
-    // progressive mixing (no direction bias)
-    mixLevel += diffusionSpeed;
+    // natural settling (prevents instant full mix)
+    mix *= 0.997;
 
-    // natural decay when not tilting
-    mixLevel *= 0.998;
+    mix = Math.max(0, Math.min(1, mix));
 
-    // clamp
-    mixLevel = Math.max(0, Math.min(1, mixLevel));
+    // final color blend
+    const c = mixColor(cA, cB, mix);
 
-    // blend from A → averaged color
-    const result = mix(cA, target, mixLevel);
+    // 💧 liquid level illusion (not full fill)
+    const level = 0.35 + mix * 0.6; // leaves empty space at top
 
-    box.style.background = `rgb(${result.r}, ${result.g}, ${result.b})`;
+    box.style.background = `
+      linear-gradient(
+        to top,
+        rgb(${c.r}, ${c.g}, ${c.b}) ${level * 100}%,
+        white ${level * 100}%
+      )
+    `;
 
-    // liquid motion feel
-    const wobble = Math.sin(mixLevel * 8) * energy * 3;
-    box.style.transform = `translateY(${wobble}px) scale(${1 + mixLevel * 0.02})`;
+    // 🌊 slosh movement (back and forth)
+    const slosh = tilt * 10 * (1 + mix);
+    box.style.transform = `translateX(${slosh}px)`;
 
-    // stabilize when fully mixed
-    if (mixLevel > 0.98) {
-      box.style.transform = "none";
-    }
   }
 
   requestAnimationFrame(animate);
