@@ -1,8 +1,10 @@
 let colorA = null;
 let colorB = null;
+
+let targetMix = 0;
 let mixStrength = 0;
 
-// simpele kleur database
+// simple color database
 const colors = {
   red: { r: 255, g: 0, b: 0 },
   blue: { r: 0, g: 0, b: 255 },
@@ -12,7 +14,7 @@ const colors = {
   orange: { r: 255, g: 165, b: 0 },
 };
 
-// kleur knoppen
+// select colors
 document.querySelectorAll(".color").forEach(btn => {
   btn.addEventListener("click", () => {
     const selected = btn.dataset.color;
@@ -29,7 +31,20 @@ document.querySelectorAll(".color").forEach(btn => {
   });
 });
 
-// mix functie
+// RESET FUNCTION
+function resetMix() {
+  mixStrength = 0;
+  targetMix = 0;
+
+  const box = document.getElementById("mixBox");
+  box.style.background = "white";
+  box.innerText = "reset";
+}
+
+// attach reset button (add a button with id="resetBtn")
+document.getElementById("resetBtn")?.addEventListener("click", resetMix);
+
+// mix function
 function mix(c1, c2, t) {
   return {
     r: Math.round(c1.r + (c2.r - c1.r) * t),
@@ -38,21 +53,30 @@ function mix(c1, c2, t) {
   };
 }
 
-// accelerometer shake detectie
-window.addEventListener("devicemotion", (event) => {
-  const acc = event.accelerationIncludingGravity;
+// smoother lerp
+function lerp(a, b, t) {
+  return a + (b - a) * t;
+}
 
-  if (!acc || !colorA || !colorB) return;
+// device tilt detection
+window.addEventListener("deviceorientation", (event) => {
+  if (!colorA || !colorB) return;
 
-  const strength =
-    Math.abs(acc.x) +
-    Math.abs(acc.y) +
-    Math.abs(acc.z);
+  const gamma = event.gamma; // left/right tilt (-90 to 90)
 
-  if (strength > 20) {
-    mixStrength += 0.05;
-    if (mixStrength > 1) mixStrength = 1;
+  if (gamma === null) return;
 
+  // convert tilt → 0..1
+  // center (0°) = 0.5
+  targetMix = (gamma + 90) / 180;
+});
+
+// animation loop for smooth mixing
+function animate() {
+  // smooth transition
+  mixStrength = lerp(mixStrength, targetMix, 0.08);
+
+  if (colorA && colorB) {
     const result = mix(colors[colorA], colors[colorB], mixStrength);
 
     const rgb = `rgb(${result.r}, ${result.g}, ${result.b})`;
@@ -61,4 +85,8 @@ window.addEventListener("devicemotion", (event) => {
     box.style.background = rgb;
     box.innerText = rgb;
   }
-});
+
+  requestAnimationFrame(animate);
+}
+
+animate();
