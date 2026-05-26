@@ -71,19 +71,41 @@ window.addEventListener("deviceorientation", (event) => {
   targetMix = (gamma + 90) / 180;
 });
 
-// animation loop for smooth mixing
 function animate() {
-  // smooth transition
   mixStrength = lerp(mixStrength, targetMix, 0.08);
+
+  const box = document.getElementById("mixBox");
 
   if (colorA && colorB) {
     const result = mix(colors[colorA], colors[colorB], mixStrength);
 
     const rgb = `rgb(${result.r}, ${result.g}, ${result.b})`;
 
-    const box = document.getElementById("mixBox");
-    box.style.background = rgb;
-    box.innerText = rgb;
+    // bottom fill height (60% → 75%)
+    const baseHeight = 60;
+    const extraHeight = mixStrength * 15;
+    const fillHeight = baseHeight + extraHeight;
+
+    // slanted top edge based on tilt
+    const tiltOffset = (mixStrength - 0.5) * 40; // controls slope
+
+    box.style.background = `
+      linear-gradient(
+        to top,
+        ${rgb} 0%,
+        ${rgb} ${fillHeight}%,
+        white ${fillHeight + 1}%
+      )
+    `;
+
+    box.style.clipPath = `
+      polygon(
+        0% 100%,
+        100% 100%,
+        100% ${fillHeight + tiltOffset}%,
+        0% ${fillHeight - tiltOffset}%
+      )
+    `;
   }
 
   requestAnimationFrame(animate);
